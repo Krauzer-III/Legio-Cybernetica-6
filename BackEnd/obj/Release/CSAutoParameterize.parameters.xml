@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="TestDataWoscow2021Connection-Web.config Connection String" description="TestDataWoscow2021Connection Строка подключения в web.config, используемая приложением для доступа к базе данных." defaultValue="Data Source=WIN-RAC4O44TMNA\SQLEXPRESS;Initial Catalog=|DataDirectory|\TestDataWoscow2021;Integrated Security=True;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\C\#\ Projects\\WebApi_Moscow\\WebApi_Moscow\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='TestDataWoscow2021Connection']/@connectionString" />
+  </parameter>
+  <parameter name="DataWoscow2021Connection-Web.config Connection String" description="DataWoscow2021Connection Строка подключения в web.config, используемая приложением для доступа к базе данных." defaultValue="Data Source=.;Initial Catalog=DataWoscow2021;Integrated Security=True;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\C\#\ Projects\\WebApi_Moscow\\WebApi_Moscow\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DataWoscow2021Connection']/@connectionString" />
+  </parameter>
+</parameters>
