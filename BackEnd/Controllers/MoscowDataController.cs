@@ -31,6 +31,7 @@ namespace WebApi_Moscow.Controllers
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 var dr = dt.Rows[i];
+                var geo = geomerty(dr["geometry"].ToString());
                 result.Add( new FinalData
                 {
                     cell_zid = dr["cell_zid"].ToString(),
@@ -45,7 +46,8 @@ namespace WebApi_Moscow.Controllers
                     customers_cnt_day = dr["customers_cnt_day"].ToString(),
                     customers_cnt_move = dr["customers_cnt_move"].ToString(),
                     served = dr["served"].ToString(),
-                    geometry = dr["geometry"].ToString()
+                    geometry_1 = geo[0],
+                    geometry_2 = geo[1]
                 });
             }
 
@@ -53,6 +55,18 @@ namespace WebApi_Moscow.Controllers
 
 
             return Json(result, JsonRequestBehavior.AllowGet);
+
+
+            string[] geomerty(string s)
+            {
+                s = s.Replace("POLYGON ((", "");
+                s = s.Replace("))", "");
+
+                List<string> l = s.Split(',').ToList();
+                l.RemoveAt(3);
+                l.RemoveAt(1);
+                return l.ToArray();
+            }
         }
 
         [HttpGet]
@@ -101,7 +115,7 @@ namespace WebApi_Moscow.Controllers
             {
                 return Json("", JsonRequestBehavior.AllowGet);
             }
-
+            var geo = geomerty(dr["geometry"].ToString());
             var result = new FinalData
             {
                 cell_zid = dr["cell_zid"].ToString(),
@@ -116,10 +130,22 @@ namespace WebApi_Moscow.Controllers
                 customers_cnt_day = dr["customers_cnt_day"].ToString(),
                 customers_cnt_move = dr["customers_cnt_move"].ToString(),
                 served = dr["served"].ToString(),
-                geometry = dr["geometry"].ToString()
+                geometry_1 = geo[0],
+                geometry_2 = geo[1]
             };
 
             return Json(result, JsonRequestBehavior.AllowGet);
+
+            string[] geomerty(string s)
+            {
+                s = s.Replace("POLYGON ((", "");
+                s = s.Replace("))", "");
+
+                List<string> l = s.Split(',').ToList();
+                l.RemoveAt(3);
+                l.RemoveAt(1);
+                return l.ToArray();
+            }
         }
     }
 }

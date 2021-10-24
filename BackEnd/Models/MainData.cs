@@ -54,7 +54,8 @@ namespace WebApi_Moscow.Models
         public string customers_cnt_day { get; set; }//Количество человек, которые находились на территории сектора по будням в дневное время чаще, чем в любых других секторах, в рассматриваемый месяц   
         public string customers_cnt_move { get; set; }//Количество человек, проживающих на территории сектора и имеющих разъездную работу   
         public string served { get; set; }//обслуживается ли поликлинникой(искомый признак)
-        public string geometry { get; set; }//координаты
+        public string geometry_1 { get; set; }//координаты
+        public string geometry_2 { get; set; }//координаты
     }
 
 
