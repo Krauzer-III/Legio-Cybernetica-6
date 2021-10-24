@@ -2,14 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\Analysis",
+    "\\BackEnd",
     "\\BackEnd\\App_Data",
-    "\\BackEnd\\bin",
     "\\BackEnd\\Content",
     "\\BackEnd\\Controllers",
     "\\BackEnd\\Properties",
     "\\BackEnd\\Properties\\PublishProfiles",
     "\\Front"
   ],
-  "SelectedNode": "\\Front",
+  "SelectedNode": "\\BackEnd\\Content",
   "PreviewInSolutionExplorer": false
 }
