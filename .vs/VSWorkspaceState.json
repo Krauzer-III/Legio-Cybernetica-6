@@ -1,8 +1,6 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Analysis",
-    "\\BackEnd",
     "\\BackEnd\\App_Data",
     "\\BackEnd\\Content",
     "\\BackEnd\\Controllers",
@@ -10,6 +8,6 @@
     "\\BackEnd\\Properties\\PublishProfiles",
     "\\Front"
   ],
-  "SelectedNode": "\\BackEnd\\Web.config",
+  "SelectedNode": "\\Front",
   "PreviewInSolutionExplorer": false
 }

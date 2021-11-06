@@ -54,6 +54,7 @@ namespace WebApi_Moscow.Controllers
                 customers_cnt_day = dr["customers_cnt_day"].ToString(),
                 customers_cnt_move = dr["customers_cnt_move"].ToString(),
                 served = dr["served"].ToString(),
+                predictions = dr["predicted"].ToString(),
                 geometry_1 = geo[0],
                 geometry_2 = geo[1]
             };
@@ -73,8 +74,8 @@ namespace WebApi_Moscow.Controllers
                 l[0] = FormatForYandex(l[0].Trim());
                 l[1] = FormatForYandex(l[1].Trim());
 
-                return l.ToArray();    
-                
+                return l.ToArray();
+
                 string FormatForYandex(string c)
                 {
                     var tmp = c.Split(' ');
@@ -82,5 +83,140 @@ namespace WebApi_Moscow.Controllers
                 }
             }
         }
+
+
+        [HttpGet]
+        public JsonResult Get50(int i)
+        {
+            const int count = 50;
+            if (MainData.dt == null)
+            {
+                MainData.GetALL_JSON();
+            }
+            FinalData[] result = new FinalData[count];
+
+
+
+            var arr = MainData.listresult.ToArray();
+            if (i * count < arr.Length)
+            {
+                try
+                {
+                    Array.Copy(arr, count * i, result, 0, count);
+                }
+                catch
+                {
+
+                    Array.Copy(arr, count * i, result, 0, arr.Length - 1 - count * i);
+                }
+            }
+
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpGet]
+        public JsonResult Get100(int i)
+        {
+            const int count = 100;
+            if (MainData.dt == null)
+            {
+                MainData.GetALL_JSON();
+            }
+            FinalData[] result = new FinalData[count];
+
+
+
+
+            var arr = MainData.listresult.ToArray();
+            if (i * count < arr.Length)
+            {
+                try
+                {
+                    Array.Copy(arr, count * i, result, 0, count);
+                }
+                catch
+                {
+
+                    Array.Copy(arr, count * i, result, 0, arr.Length - 1 - count * i);
+                }
+            }
+
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpGet]
+        public JsonResult Get500(int i)
+        {
+            const int count = 500;
+            if (MainData.dt == null)
+            {
+                MainData.GetALL_JSON();
+            }
+            FinalData[] result = new FinalData[count];
+
+
+
+
+            var arr = MainData.listresult.ToArray();
+            if (i * count < arr.Length)
+            {
+                try
+                {
+                    Array.Copy(arr, count * i, result, 0, count);
+                }
+                catch
+                {
+
+                    Array.Copy(arr, count * i, result, 0, arr.Length - 1 - count * i);
+                }
+            }
+
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+        [HttpGet]
+        public JsonResult GetAllMini()
+        {
+            if (MainData.dt == null)
+            {
+                MainData.GetALL_JSON();
+            }
+            miniFinalData[] result = new miniFinalData[MainData.listresult.Count];
+
+            for (int i = 0; i < MainData.listresult.Count; i++)
+            {
+                result[i] = new miniFinalData
+                {
+                    ID = i,
+                    geometry_1 = MainData.listresult[i].geometry_1,
+                    geometry_2 = MainData.listresult[i].geometry_2,
+                    predictions = MainData.listresult[i].predictions
+                };
+            }
+
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+
+
+        public class miniFinalData
+        {
+            public int ID { get; set; }
+            public string geometry_1 { get; set; }//координаты
+            public string geometry_2 { get; set; }//координаты
+            public string predictions { get; set; }//вероятность
+        }
+
+
     }
 }

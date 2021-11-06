@@ -15,7 +15,7 @@ namespace WebApi_Moscow
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new DbTestDataInitializer());  //Анкетный инициализатор
+           Database.SetInitializer(new DbDataInitializer());  //инициализатор
            // Database.SetInitializer(new AppDbInitializer());  //Аутентификационный инициализатор
 
             AreaRegistration.RegisterAllAreas();
